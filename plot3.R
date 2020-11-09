@@ -12,10 +12,13 @@ subDataSet[1441:2880,"Time"] <- format(subDataSet[1441:2880,"Time"],"2007-02-02 
 
 
 # calling the basic histogram plot function
-plot(subDataSet$Time,as.numeric(as.character(subDataSet$Global_active_power)),type="l",xlab="",ylab="Global Active Power (kilowatts)") 
+plot(subDataSet$Time,as.numeric(as.character(subDataSet$Sub_metering_1)),type="l",xlab="",ylab="Energy sub metering") 
 
-
+with(subDataSet,lines(Time,as.numeric(as.character(Sub_metering_1))))
+with(subDataSet,lines(Time,as.numeric(as.character(Sub_metering_2)),col="red"))
+with(subDataSet,lines(Time,as.numeric(as.character(Sub_metering_3)),col="blue"))
+legend("topright", lty=1, col=c("black","red","blue"),legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
 # setting title for The Graph
-title(main="Global Active Power Vs Time")
+title(main="Energy sub-metering")
 
-png("plot2.png", width=480, height=480)
+png("plot3.png", width=480, height=480)
